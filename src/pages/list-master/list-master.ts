@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, ModalController, NavController, LoadingController } from 'ionic-angular';
+import { NativeAudio } from '@ionic-native/native-audio';
 
 import { Item } from '../../models/item';
 import { Items } from '../../providers';
@@ -15,13 +16,19 @@ export class ListMasterPage {
   isDataAvailable: boolean = false;
   constructor(public navCtrl: NavController,
     public items: Items, public modalCtrl: ModalController,
-    public storage: Storage, public loadingCtrl: LoadingController) {
+    public storage: Storage, public loadingCtrl: LoadingController,
+    private nativeAudio: NativeAudio) {
+      this.nativeAudio.preloadSimple('dhol', '../../assets/sounds/dhol.wav');
   }
 
   /**
    * The view loaded, let's query our items for the list
    */
   ionViewDidLoad() {
+  }
+
+  hitDhol() {
+    this.nativeAudio.play('dhol');
   }
 
   ngOnInit() {
