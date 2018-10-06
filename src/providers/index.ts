@@ -5,3 +5,4 @@ export { Settings } from './settings/settings';
 export { User } from './user/user';
 export { Menu } from './menu/menu';
 export { Region } from './region/region';
+export { Room } from './room/room';

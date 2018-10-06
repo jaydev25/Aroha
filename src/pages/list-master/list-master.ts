@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, ModalController, NavController, LoadingController } from 'ionic-angular';
 import { NativeAudio } from '@ionic-native/native-audio';
 
+
 import { Item } from '../../models/item';
-import { Items } from '../../providers';
+import { Items, Room } from '../../providers';
 import { Storage } from '@ionic/storage';
 
 @IonicPage()
@@ -17,7 +18,8 @@ export class ListMasterPage {
   constructor(public navCtrl: NavController,
     public items: Items, public modalCtrl: ModalController,
     public storage: Storage, public loadingCtrl: LoadingController,
-    private nativeAudio: NativeAudio) {
+    private nativeAudio: NativeAudio,
+    public roomService: Room) {
       this.nativeAudio.preloadSimple('dhol', '../../assets/sounds/dhol.wav');
   }
 
@@ -29,6 +31,7 @@ export class ListMasterPage {
 
   hitDhol() {
     this.nativeAudio.play('dhol');
+    this.roomService.hit(1);
   }
 
   ngOnInit() {

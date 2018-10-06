@@ -11,7 +11,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { NativeAudio } from '@ionic-native/native-audio';
 
 // import { Items } from '../mocks/providers/items';
-import { Settings, User, Api, Menu, Region, Items } from '../providers';
+import { Settings, User, Api, Menu, Region, Items, Room } from '../providers';
 import { MyApp } from './app.component';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
@@ -63,6 +63,7 @@ export function provideSettings(storage: Storage) {
     User,
     Menu,
     Region,
+    Room,
     Camera,
     InAppBrowser,
     SplashScreen,
