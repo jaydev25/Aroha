@@ -1,0 +1,7 @@
+{
+  "name": "Ads",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

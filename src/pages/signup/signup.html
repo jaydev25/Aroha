@@ -1,0 +1,111 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle left>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'SIGNUP_TITLE' | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <form (submit)="doSignup()">
+    <ion-list>
+
+      <ion-item>
+        <ion-label floating>First Name</ion-label>
+        <ion-input type="text" [(ngModel)]="account.firstName" name="firstName"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Last Name</ion-label>
+        <ion-input type="text" [(ngModel)]="account.lastName" name="lastName"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Mobile Number</ion-label>
+        <ion-input type="text" [(ngModel)]="account.contact" name="contact"></ion-input>
+      </ion-item>
+
+      <!--
+      Want to add a Username? Here you go:
+
+      <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input type="text" [(ngModel)]="account.username" name="username"></ion-input>
+      </ion-item>
+      -->
+
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Confirm Password</ion-label>
+        <ion-input type="password" [(ngModel)]="confirmPassword" name="confirmPassword"></ion-input>
+      </ion-item>
+
+      <div padding *ngIf="confirmPassword!=account.password && confirmPassword">
+        <p>Password did not match</p>
+      </div>
+
+      <ion-item>
+        <ion-label floating>Occupation</ion-label>
+        <ion-input type="text" [(ngModel)]="account.occupation" name="occupation"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Account Type</ion-label>
+        <ion-select [(ngModel)]="account.accType" name="accType">
+          <ion-option value="Member">Member</ion-option>
+          <ion-option value="Pathak">Pathak</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- <ion-list no-lines>
+        <button menuClose ion-item *ngFor="let p of countries" class="transparent list-item">
+          {{p.name}}
+        </button>
+      </ion-list> -->
+
+      <ion-item>
+        <ion-label>Country</ion-label>
+        <ion-select [(ngModel)]="country" name="country" interface="action-sheet" (ionChange)="getStatesById($event)">
+          <ion-option *ngFor="let country of countries" [value] = "country">{{country.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>State</ion-label>
+        <ion-select [(ngModel)]="state" name="state" interface="action-sheet" (ionChange)="getCitiesById($event)">
+          <ion-option *ngFor="let state of filteredStates" [value] = "state">{{state.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>City</ion-label>
+        <ion-select [(ngModel)]="city" name="city" interface="action-sheet">
+          <ion-option *ngFor="let city of filteredCities" [value] = "city">{{city.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Birth Date</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="account.birthDate" name="birthDate"></ion-datetime>
+      </ion-item>
+
+      <div padding>
+        <button ion-button color="primary" [disabled]="confirmPassword!==account.password" block>{{ 'SIGNUP_BUTTON' | translate }}</button>
+      </div>
+
+    </ion-list>
+  </form>
+</ion-content>
