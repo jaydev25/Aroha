@@ -15,7 +15,7 @@ export class Room {
 
     public getMessages = () => {
         return Observable.create((observer) => {
-            this.socket.on('new-message', (message) => {
+            this.socket.on('hit', (message) => {
                 observer.next(message);
             });
         });
